@@ -113,7 +113,7 @@ section {
   animation-duration: 25s;
 }
 
-/* Light beams */
+/* Light beams and particles */
 .light-beam {
   position: absolute;
   top: -50%;
@@ -129,6 +129,15 @@ section {
   transform: rotate(45deg);
   pointer-events: none;
   animation: beam-sweep 20s infinite linear;
+}
+
+.particles-mesh {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 @keyframes beam-sweep {
@@ -165,9 +174,27 @@ section {
   background: rgba(14, 42, 92, 0.3);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--color-pearl-text);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  border-color: rgba(236, 72, 153, 0.6);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 15px rgba(236, 72, 153, 0.3);
+  background: rgba(14, 42, 92, 0.5);
+}
+
+/* Custom Select styling to hide default arrow in webkit but keep it native */
+select.glass-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+select.glass-input option {
+  background-color: var(--color-midnight-navy);
+  color: var(--color-pearl-text);
 }
 
 /* Gradient Borders */
@@ -178,12 +205,41 @@ section {
   border: 1px solid transparent;
 }
 
+.animated-gradient-border {
+  position: relative;
+  border-radius: inherit;
+}
+.animated-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-electric-blue), var(--color-violet-accent), var(--color-magenta-pink), var(--color-warm-orange), var(--color-electric-blue));
+  background-size: 300% 100%;
+  animation: gradient-flow 6s linear infinite;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.group:hover .animated-gradient-border::before {
+  opacity: 1;
+}
+
 /* Premium Gradient Text */
 .text-gradient-hero {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-image: linear-gradient(to right, var(--color-pearl-text) 0%, var(--color-slate-muted) 100%);
+}
+
+.text-gradient-animated {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, var(--color-electric-blue), var(--color-violet-accent), var(--color-magenta-pink), var(--color-warm-orange), var(--color-electric-blue));
+  background-size: 300% 100%;
+  animation: gradient-flow 6s linear infinite;
 }
 
 .text-gradient-accent {
@@ -202,8 +258,35 @@ section {
   background-image: linear-gradient(135deg, var(--color-electric-blue), var(--color-violet-accent));
 }
 
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
 @keyframes gradient-shine {
   to { background-position: 200% center; }
+}
+
+/* Button Shimmer / Sweep */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: skewX(-20deg);
+  animation: shine-sweep 4s infinite linear;
+}
+@keyframes shine-sweep {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
 }
 
 /* Cinematic Pulse */
@@ -235,8 +318,11 @@ section {
 @media (prefers-reduced-motion: reduce) {
   .aurora-blob { animation: none; }
   .light-beam { animation: none; }
+  .text-gradient-animated { animation: none; }
   .text-gradient-accent { animation: none; }
   .pulse-glow { animation: none; }
+  .btn-shine::after { animation: none; }
+  .animated-gradient-border::before { animation: none; }
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

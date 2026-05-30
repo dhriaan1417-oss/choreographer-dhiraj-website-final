@@ -30,6 +30,7 @@ export default function RootLayout({
     <html lang="en" className={`scroll-smooth ${spaceGrotesk.variable} ${plusJakarta.variable}`}>
       <body className="antialiased text-[var(--color-pearl-text)] relative min-h-screen bg-[var(--color-midnight-navy)]">
         <div className="aurora-bg">
+          <div className="particles-mesh"></div>
           <div className="aurora-blob blob-1"></div>
           <div className="aurora-blob blob-2"></div>
           <div className="aurora-blob blob-3"></div>
