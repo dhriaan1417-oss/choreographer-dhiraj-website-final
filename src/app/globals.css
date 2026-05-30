@@ -1,28 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  --color-pearl-white: #F8F7FF;
-  --color-ice-blue: #EAF6FF;
-  --color-lavender-mist: #ECE7FF;
-  --color-blush-pink: #FFE3F1;
-  --color-electric-orchid: #8B5CF6;
-  --color-cinematic-blue: #2563EB;
-  --color-rose-accent: #F43F8B;
-  --color-deep-indigo: #17113A;
-  --color-soft-slate: #5B5870;
+  --color-frost-pearl: #F7F8FC;
+  --color-cool-mist: #EEF3FF;
+  --color-light-denim: #BFD1FF;
+  --color-premium-denim: #5A74D6;
+  --color-deep-ink: #1C2454;
+  --color-soft-lavender: #C8B6FF;
+  --color-blush-pink: #F4C7E7;
+  --color-pink-glow: #F36FB3;
+  --color-slate-blend: #6B7280;
 
   --font-headline: var(--font-space-grotesk);
   --font-body: var(--font-plus-jakarta);
 }
 
 :root {
-  --foreground-rgb: 23, 17, 58;
-  --background-rgb: 248, 247, 255;
+  --foreground-rgb: 28, 36, 84;
+  --background-rgb: 247, 248, 252;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: var(--color-pearl-white);
+  background-color: var(--color-frost-pearl);
   font-family: var(--font-body);
   overflow-x: hidden;
 }
@@ -33,109 +33,115 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Utilities for responsive clamp typography */
 .text-clamp-hero {
-  font-size: clamp(2.5rem, 6vw + 1rem, 5.5rem);
+  font-size: clamp(2.5rem, 7vw + 1rem, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.text-clamp-h2 {
+  font-size: clamp(2.25rem, 5vw + 0.5rem, 4rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
-.text-clamp-h2 {
-  font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+.text-clamp-h3 {
+  font-size: clamp(1.5rem, 3vw + 0.25rem, 2.5rem);
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
 
-.text-clamp-h3 {
-  font-size: clamp(1.5rem, 3vw + 0.25rem, 2.25rem);
-  line-height: 1.3;
-}
-
-/* Cinematic Aurora Gradient Background */
+/* Premium Cinematic Layered Gradient Background */
 .aurora-bg {
   position: fixed;
   inset: 0;
   z-index: -10;
-  background-color: var(--color-pearl-white);
+  background: var(--color-frost-pearl);
+  background: radial-gradient(circle at top left, var(--color-cool-mist) 0%, var(--color-frost-pearl) 40%);
   overflow: hidden;
 }
 
 .aurora-blob {
   position: absolute;
-  filter: blur(80px);
-  opacity: 0.6;
-  animation: blob-float 20s infinite ease-in-out alternate;
+  filter: blur(100px);
+  opacity: 0.45;
+  animation: blob-float 25s infinite ease-in-out alternate;
   border-radius: 50%;
   transform: translateZ(0);
 }
 
 .blob-1 {
-  background: var(--color-lavender-mist);
-  width: 50vw;
-  height: 50vw;
-  top: -10%;
+  background: var(--color-light-denim);
+  width: 60vw;
+  height: 60vw;
+  top: -20%;
   left: -10%;
-  animation-delay: 0s;
+  animation-duration: 30s;
 }
 
 .blob-2 {
-  background: var(--color-ice-blue);
-  width: 60vw;
-  height: 60vw;
-  bottom: -20%;
-  right: -10%;
-  animation-delay: -5s;
+  background: var(--color-soft-lavender);
+  width: 70vw;
+  height: 70vw;
+  bottom: -30%;
+  right: -15%;
+  animation-delay: -10s;
 }
 
 .blob-3 {
   background: var(--color-blush-pink);
+  width: 50vw;
+  height: 50vw;
+  top: 30%;
+  left: 20%;
+  opacity: 0.3;
+  animation-delay: -15s;
+}
+
+.blob-4 {
+  background: var(--color-premium-denim);
   width: 40vw;
   height: 40vw;
-  top: 40%;
-  left: 30%;
-  animation-delay: -10s;
+  top: 60%;
+  right: 10%;
+  opacity: 0.2;
+  animation-duration: 20s;
 }
 
 @keyframes blob-float {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(5%, 10%) scale(1.1);
-  }
-  66% {
-    transform: translate(-10%, 5%) scale(0.95);
-  }
-  100% {
-    transform: translate(0, -10%) scale(1.05);
-  }
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate(5%, 15%) scale(1.1) rotate(5deg); }
+  66% { transform: translate(-10%, 5%) scale(0.9) rotate(-5deg); }
+  100% { transform: translate(0, -10%) scale(1.05) rotate(0deg); }
 }
 
-/* Noise Texture Overlay */
-.noise-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: -5;
-  opacity: 0.4;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Glassmorphism Utilities */
+/* Luxury Glassmorphism Utilities */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 40px -10px rgba(28, 36, 84, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 .glass-nav {
-  background: rgba(248, 247, 255, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(247, 248, 252, 0.75);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 30px rgba(28, 36, 84, 0.03);
 }
 
-/* Shimmer Sweep Animation */
+.glass-input {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 2px 4px rgba(28, 36, 84, 0.02),
+              0 2px 10px rgba(28, 36, 84, 0.02);
+}
+
+/* Refined Shimmer Sweep Animation */
 .shimmer-sweep {
   position: relative;
   overflow: hidden;
@@ -145,39 +151,64 @@ h1, h2, h3, h4, h5, h6 {
   content: "";
   position: absolute;
   top: 0;
-  left: -100%;
+  left: -150%;
   width: 50%;
   height: 100%;
   background: linear-gradient(
     to right,
     transparent 0%,
-    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.8) 50%,
     transparent 100%
   );
-  transform: skewX(-20deg);
-  animation: shimmer 4s infinite linear;
+  transform: skewX(-25deg);
+  animation: shimmer 5s infinite cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
 
 @keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 200%; }
+  0% { left: -150%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { left: 250%; opacity: 0; }
+  100% { left: 250%; opacity: 0; }
 }
 
-/* Gradient Text */
-.text-gradient {
+/* Premium Gradient Text */
+.text-gradient-primary {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, var(--color-electric-orchid), var(--color-cinematic-blue));
+  background-image: linear-gradient(135deg, var(--color-deep-ink), var(--color-premium-denim));
 }
 
-.text-gradient-rose {
+.text-gradient-accent {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, var(--color-rose-accent), var(--color-electric-orchid));
+  background-image: linear-gradient(135deg, var(--color-premium-denim), var(--color-pink-glow));
 }
+
+.text-gradient-soft {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(135deg, var(--color-deep-ink), var(--color-soft-lavender));
+}
+
+/* Portfolio Cinematic Frame */
+.cinematic-frame {
+  position: relative;
+}
+.cinematic-frame::before, .cinematic-frame::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(28, 36, 84, 0.03);
+  z-index: 10;
+}
+.cinematic-frame::before { top: 10%; }
+.cinematic-frame::after { bottom: 10%; }
 
 @media (prefers-reduced-motion: reduce) {
   .aurora-blob {
