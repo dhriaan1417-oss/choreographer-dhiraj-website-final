@@ -13,7 +13,6 @@ import {
   ChevronDown,
   Menu,
   Trophy,
-  Sparkles,
   Clapperboard,
   Sparkle
 } from 'lucide-react';
@@ -23,9 +22,9 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' as const } }
 };
 
-const textReveal = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: 'easeOut' as const } }
+const heroTextReveal = {
+  hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
+  visible: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 1.2, ease: "easeOut" as const } }
 };
 
 const staggerContainer = {
@@ -54,8 +53,8 @@ export default function Home() {
             className="text-xl md:text-2xl font-bold tracking-tight text-[var(--color-pearl-text)] flex items-center gap-2 group"
           >
             <Sparkle className="w-5 h-5 text-[var(--color-electric-blue)] group-hover:text-[var(--color-magenta-pink)] transition-colors hidden sm:block" />
-            <span className="group-hover:text-gradient-animated transition-all duration-500" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
-              DHIRAJ BHALERAO
+            <span className="group-hover:text-gradient-animated transition-all duration-500 font-display">
+              DHIRAJ
             </span>
           </motion.div>
           <div className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wider text-[var(--color-slate-muted)] uppercase">
@@ -78,90 +77,84 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-[100dvh] flex items-center pt-24 pb-12 px-6">
-        <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-12 items-center relative z-10">
+      <section className="relative min-h-[100dvh] flex flex-col justify-center pt-24 pb-12 px-6">
+        <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col items-center text-center">
           <motion.div
-            className="flex flex-col z-10 lg:col-span-8"
             style={{ y: yHero, opacity: opacityHero }}
+            className="w-full flex flex-col items-center"
           >
+            {/* Opening Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-8 md:mb-12 inline-flex items-center justify-center"
+            >
+              <div className="glass-panel px-6 py-2.5 rounded-full border border-white/20 shadow-[0_0_20px_rgba(124,58,237,0.3)] glow-sweep">
+                <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-gradient-award">
+                  Zee Gaurav Award Winner — Best Choreographer of the Year 2025–2026
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Huge Name & Identity */}
             <motion.div
               variants={staggerContainer}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-3 mb-8"
+              className="flex flex-col items-center mb-10 md:mb-14"
+            >
+              <div className="overflow-hidden">
+                <motion.h1 variants={heroTextReveal} className="text-clamp-hero-name font-bold font-display text-[var(--color-pearl-text)] drop-shadow-2xl">
+                  DHIRAJ BHALERAO
+                </motion.h1>
+              </div>
+              <div className="overflow-hidden mt-2 md:mt-4">
+                <motion.h2 variants={heroTextReveal} className="text-clamp-hero-sub font-bold uppercase text-gradient-animated">
+                  Choreographer
+                </motion.h2>
+              </div>
+            </motion.div>
+
+            {/* Service Chips */}
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-wrap justify-center gap-3 md:gap-5 mb-14 md:mb-20 max-w-4xl"
             >
               {['Film Choreography', 'Luxury Weddings', 'Live Shows', 'Celebrity Work'].map((tag, i) => (
-                <motion.span
+                <motion.div
                   key={i}
                   variants={fadeInUp}
-                  className="px-4 py-1.5 rounded-full glass-panel text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-[var(--color-pearl-text)] shadow-[0_0_10px_rgba(59,130,246,0.1)] hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:-translate-y-1 hover:border-[var(--color-magenta-pink)]/50 transition-all duration-300 cursor-default"
+                  className="gradient-border-wrap rounded-full p-[1px] group cursor-default"
                 >
-                  {tag}
-                </motion.span>
+                  <div className="bg-[var(--color-midnight-navy)]/80 backdrop-blur-md px-6 py-2.5 rounded-full text-[11px] md:text-sm font-bold tracking-[0.15em] uppercase text-[var(--color-pearl-text)] group-hover:bg-transparent group-hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] transition-all duration-300">
+                    <span className="group-hover:text-gradient-animated transition-all duration-300">{tag}</span>
+                  </div>
+                </motion.div>
               ))}
             </motion.div>
 
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-              className="mb-8"
-            >
-              <div className="overflow-hidden pb-1">
-                <motion.h1 variants={textReveal} className="text-clamp-hero font-bold text-gradient-hero drop-shadow-sm">
-                  Movement That
-                </motion.h1>
-              </div>
-              <div className="overflow-hidden pb-2">
-                <motion.h1 variants={textReveal} className="text-clamp-hero font-bold text-gradient-animated">
-                  Creates Moments.
-                </motion.h1>
-              </div>
-            </motion.div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="text-lg md:text-2xl text-[var(--color-slate-muted)] max-w-2xl mb-12 leading-relaxed font-light"
-            >
-              Award-winning choreography for films, television, luxury weddings, live shows, and celebrity events.
-            </motion.p>
-
+            {/* Action Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-wrap gap-5"
+              transition={{ duration: 0.8, delay: 1 }}
+              className="flex flex-wrap justify-center gap-5"
             >
-              <button className="btn-shine bg-gradient-to-r from-[var(--color-electric-blue)] to-[var(--color-magenta-pink)] text-white px-10 py-4 md:py-5 rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] hover:scale-105 flex items-center gap-3 group text-sm md:text-base">
+              <button className="btn-shine bg-gradient-to-r from-[var(--color-electric-blue)] to-[var(--color-magenta-pink)] text-white px-10 py-5 rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] hover:scale-105 flex items-center gap-3 group text-sm md:text-base">
                 Book a Project
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
               </button>
-              <button className="glass-panel px-10 py-4 md:py-5 rounded-full font-bold text-[var(--color-pearl-text)] hover:bg-white/10 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] transition-all duration-300 flex items-center gap-3 text-sm md:text-base group">
+              <button className="glass-panel px-10 py-5 rounded-full font-bold text-[var(--color-pearl-text)] hover:bg-white/10 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] transition-all duration-300 flex items-center gap-3 text-sm md:text-base group">
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[var(--color-electric-blue)] group-hover:text-white transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.6)]">
-                  <Play className="w-3 h-3 md:w-4 md:h-4 ml-0.5 text-[var(--color-pearl-text)] group-hover:text-white transition-colors" fill="currentColor" />
+                  <Play className="w-4 h-4 ml-0.5 text-[var(--color-pearl-text)] group-hover:text-white transition-colors" fill="currentColor" />
                 </div>
                 View Work
               </button>
             </motion.div>
-          </motion.div>
 
-          <motion.div
-             initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-             animate={{ opacity: 1, scale: 1, rotate: 0 }}
-             transition={{ duration: 1.5, ease: "easeOut", delay: 0.4 }}
-             className="relative h-[300px] md:h-[500px] w-full z-0 lg:col-span-4 hidden lg:flex items-center justify-center"
-          >
-             <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-electric-blue)] via-[var(--color-violet-accent)] to-[var(--color-magenta-pink)] rounded-[2rem] opacity-40 blur-3xl pulse-glow"></div>
-             <div className="relative w-full h-full glass-panel rounded-[2rem] overflow-hidden flex items-center justify-center shadow-2xl border-white/20">
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSI+PC9yZWN0Pgo8cGF0aCBkPSJNMCAwTDggOFpNOCAwTDAgOFoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuMDUiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')] opacity-20"></div>
-                <div className="absolute w-[200%] h-[200%] bg-gradient-to-tr from-white/10 via-transparent to-[var(--color-magenta-pink)]/30 rotate-45 animate-spin" style={{ animationDuration: '30s' }}></div>
-                <div className="relative text-center p-8">
-                    <Sparkles className="w-14 h-14 text-[var(--color-warm-orange)] mx-auto mb-4" />
-                    <span className="font-headline font-bold text-sm tracking-[0.4em] text-[var(--color-pearl-text)] uppercase text-shadow-sm">Choreography</span>
-                </div>
-             </div>
           </motion.div>
         </div>
 
@@ -441,7 +434,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--color-midnight-navy)] pointer-events-none"></div>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 relative z-10">
           <div className="text-center md:text-left">
-            <div className="text-2xl md:text-3xl font-bold tracking-tight mb-2 flex items-center justify-center md:justify-start gap-2" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+            <div className="text-2xl md:text-3xl font-bold tracking-tight mb-2 flex items-center justify-center md:justify-start gap-2 font-display">
               <Sparkle className="w-5 h-5 text-[var(--color-electric-blue)]" />
               <span className="text-gradient-animated">DHIRAJ BHALERAO</span>
             </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, Plus_Jakarta_Sans } from 'next/font/google'
+import { Space_Grotesk, Plus_Jakarta_Sans, Syne } from 'next/font/google'
 import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({
@@ -16,6 +16,13 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ['400', '500', '600', '700'],
 })
 
+const syne = Syne({
+  subsets: ['latin'],
+  variable: '--font-display-syne',
+  display: 'swap',
+  weight: ['500', '600', '700', '800'],
+})
+
 export const metadata: Metadata = {
   title: 'Dhiraj Bhalerao | Premium Cinematic Choreographer',
   description: 'Award-winning choreography for film, television, luxury weddings, and live entertainment.',
@@ -27,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`scroll-smooth ${spaceGrotesk.variable} ${plusJakarta.variable}`}>
+    <html lang="en" className={`scroll-smooth ${spaceGrotesk.variable} ${plusJakarta.variable} ${syne.variable}`}>
       <body className="antialiased text-[var(--color-pearl-text)] relative min-h-screen bg-[var(--color-midnight-navy)]">
         <div className="aurora-bg">
           <div className="particles-mesh"></div>

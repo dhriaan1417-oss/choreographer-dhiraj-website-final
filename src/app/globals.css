@@ -12,6 +12,7 @@
 
   --font-headline: var(--font-space-grotesk);
   --font-body: var(--font-plus-jakarta);
+  --font-display: var(--font-display-syne);
 }
 
 :root {
@@ -30,11 +31,27 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-headline);
 }
 
+.font-display {
+  font-family: var(--font-display);
+}
+
 section {
   scroll-margin-top: 6rem;
 }
 
 /* Utilities for responsive clamp typography */
+.text-clamp-hero-name {
+  font-size: clamp(3rem, 8vw + 1rem, 7.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.text-clamp-hero-sub {
+  font-size: clamp(1.25rem, 3vw + 0.5rem, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: 0.15em;
+}
+
 .text-clamp-hero {
   font-size: clamp(3rem, 8vw + 1rem, 6.5rem);
   line-height: 1.05;
@@ -186,7 +203,6 @@ section {
   background: rgba(14, 42, 92, 0.5);
 }
 
-/* Custom Select styling to hide default arrow in webkit but keep it native */
 select.glass-input {
   appearance: none;
   -webkit-appearance: none;
@@ -237,9 +253,18 @@ select.glass-input option {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, var(--color-electric-blue), var(--color-violet-accent), var(--color-magenta-pink), var(--color-warm-orange), var(--color-electric-blue));
+  background-image: linear-gradient(to right, var(--color-electric-blue), var(--color-violet-accent), var(--color-magenta-pink), var(--color-electric-blue));
   background-size: 300% 100%;
   animation: gradient-flow 6s linear infinite;
+}
+
+.text-gradient-award {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, var(--color-warm-orange), var(--color-magenta-pink), var(--color-violet-accent), var(--color-warm-orange));
+  background-size: 300% 100%;
+  animation: gradient-flow 5s linear infinite;
 }
 
 .text-gradient-accent {
@@ -299,6 +324,34 @@ select.glass-input option {
   100% { box-shadow: 0 0 40px 5px var(--color-magenta-pink); }
 }
 
+/* Glow Sweep (Hero badge) */
+.glow-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.glow-sweep::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -200%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(236, 72, 153, 0.4) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: glow-sweep-anim 6s infinite ease-in-out;
+  pointer-events: none;
+}
+@keyframes glow-sweep-anim {
+  0% { left: -200%; }
+  50% { left: 200%; }
+  100% { left: 200%; }
+}
+
 /* Cinematic Frame */
 .cinematic-frame {
   position: relative;
@@ -316,13 +369,7 @@ select.glass-input option {
 .cinematic-frame::after { bottom: 10%; }
 
 @media (prefers-reduced-motion: reduce) {
-  .aurora-blob { animation: none; }
-  .light-beam { animation: none; }
-  .text-gradient-animated { animation: none; }
-  .text-gradient-accent { animation: none; }
-  .pulse-glow { animation: none; }
-  .btn-shine::after { animation: none; }
-  .animated-gradient-border::before { animation: none; }
+  .aurora-blob, .light-beam, .text-gradient-animated, .text-gradient-award, .text-gradient-accent, .pulse-glow, .btn-shine::after, .animated-gradient-border::before, .glow-sweep::after { animation: none; }
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
