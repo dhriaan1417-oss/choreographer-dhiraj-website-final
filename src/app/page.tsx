@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   Play,
@@ -14,7 +15,8 @@ import {
   Menu,
   Trophy,
   Clapperboard,
-  Sparkle
+  Sparkle,
+  Smartphone
 } from 'lucide-react';
 
 const fadeInUp = {
@@ -42,6 +44,33 @@ export default function Home() {
   const yHero = useTransform(scrollY, [0, 800], [0, 150]);
   const opacityHero = useTransform(scrollY, [0, 600], [1, 0]);
 
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    projectType: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleWhatsAppInquiry = () => {
+    const text = `Hi Dhiraj,
+
+I am inquiring about a project.
+
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Project Type: ${formData.projectType}
+Message: ${formData.message}`;
+    const encodedText = encodeURIComponent(text);
+    window.open(`https://wa.me/919325465937?text=${encodedText}`, '_blank');
+  };
+
+
   return (
     <main className="relative w-full overflow-hidden selection:bg-[var(--color-magenta-pink)] selection:text-white">
       {/* Navigation */}
@@ -63,9 +92,9 @@ export default function Home() {
             <a href="#journey" className="hover:text-[var(--color-pearl-text)] transition-all">Journey</a>
             <a href="#services" className="hover:text-[var(--color-pearl-text)] transition-all">Services</a>
             <div className="gradient-border-wrap rounded-full p-[1px]">
-              <button className="btn-shine bg-[var(--color-midnight-navy)] px-8 py-3 rounded-full hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] transition-all duration-300 transform hover:-translate-y-0.5 text-[var(--color-pearl-text)]">
+              <a href="https://wa.me/919325465937" target="_blank" rel="noopener noreferrer" className="btn-shine bg-[var(--color-midnight-navy)] px-8 py-3 rounded-full hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] transition-all duration-300 transform hover:-translate-y-0.5 text-[var(--color-pearl-text)] inline-block">
                 Book Project
-              </button>
+              </a>
             </div>
           </div>
           <div className="md:hidden">
@@ -143,10 +172,10 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 1 }}
               className="flex flex-wrap justify-center gap-5"
             >
-              <button className="btn-shine bg-gradient-to-r from-[var(--color-electric-blue)] to-[var(--color-magenta-pink)] text-white px-10 py-5 rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] hover:scale-105 flex items-center gap-3 group text-sm md:text-base">
+              <a href="https://wa.me/919325465937" target="_blank" rel="noopener noreferrer" className="btn-shine bg-gradient-to-r from-[var(--color-electric-blue)] to-[var(--color-magenta-pink)] text-white px-10 py-5 rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] hover:scale-105 flex items-center gap-3 group text-sm md:text-base">
                 Book a Project
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
-              </button>
+              </a>
               <button className="glass-panel px-10 py-5 rounded-full font-bold text-[var(--color-pearl-text)] hover:bg-white/10 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] transition-all duration-300 flex items-center gap-3 text-sm md:text-base group">
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[var(--color-electric-blue)] group-hover:text-white transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.6)]">
                   <Play className="w-4 h-4 ml-0.5 text-[var(--color-pearl-text)] group-hover:text-white transition-colors" fill="currentColor" />
@@ -377,30 +406,50 @@ export default function Home() {
 
              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mb-12 relative z-10">
                <h2 className="text-clamp-h2 font-bold text-gradient-animated mb-4">Let&apos;s Build Your Next Moment.</h2>
-               <p className="text-[var(--color-slate-muted)] text-base md:text-lg font-medium max-w-2xl">Inquire about availability for your upcoming project or event.</p>
+               <p className="text-[var(--color-slate-muted)] text-base md:text-lg font-medium max-w-2xl mb-6">Inquire about availability for your upcoming project or event.</p>
+               <div className="flex flex-col sm:flex-row gap-6 mb-8">
+                 <a href="https://wa.me/919325465937" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[var(--color-pearl-text)] hover:text-[var(--color-magenta-pink)] transition-colors group">
+                   <div className="w-10 h-10 rounded-full glass-panel flex items-center justify-center bg-white/5 group-hover:bg-[var(--color-magenta-pink)]/20 transition-all border border-white/10">
+                     <Smartphone className="w-4 h-4 text-[var(--color-magenta-pink)]" />
+                   </div>
+                   <div className="flex flex-col">
+                     <span className="text-[10px] uppercase tracking-widest text-[var(--color-slate-muted)] font-bold">WhatsApp / Phone</span>
+                     <span className="font-semibold tracking-wide">9325465937 / 9175734571</span>
+                   </div>
+                 </a>
+                 <a href="mailto:dhiraj.checks@gmail.com" className="flex items-center gap-3 text-[var(--color-pearl-text)] hover:text-[var(--color-electric-blue)] transition-colors group">
+                   <div className="w-10 h-10 rounded-full glass-panel flex items-center justify-center bg-white/5 group-hover:bg-[var(--color-electric-blue)]/20 transition-all border border-white/10">
+                     <Mail className="w-4 h-4 text-[var(--color-electric-blue)]" />
+                   </div>
+                   <div className="flex flex-col">
+                     <span className="text-[10px] uppercase tracking-widest text-[var(--color-slate-muted)] font-bold">Email</span>
+                     <span className="font-semibold tracking-wide">dhiraj.checks@gmail.com</span>
+                   </div>
+                 </a>
+               </div>
              </motion.div>
 
              <form className="space-y-6 md:space-y-8 relative z-10">
                 <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                   <div className="space-y-3">
                     <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-slate-muted)] pl-2">Name</label>
-                    <input type="text" className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg hover:bg-white/5" placeholder="Your name" />
+                    <input type="text" className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg hover:bg-white/5" name="name" value={formData.name} onChange={handleInputChange} placeholder="Your name" />
                   </div>
                   <div className="space-y-3">
                     <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-slate-muted)] pl-2">Phone / WhatsApp</label>
-                    <input type="tel" className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg hover:bg-white/5" placeholder="Your number" />
+                    <input type="tel" className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg hover:bg-white/5" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="Your number" />
                   </div>
                 </div>
 
                 <div className="space-y-3">
                   <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-slate-muted)] pl-2">Email</label>
-                  <input type="email" className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg hover:bg-white/5" placeholder="Your email address" />
+                  <input type="email" className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg hover:bg-white/5" name="email" value={formData.email} onChange={handleInputChange} placeholder="Your email address" />
                 </div>
 
                 <div className="space-y-3">
                   <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-slate-muted)] pl-2">Project Type</label>
                   <div className="relative">
-                    <select className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg appearance-none cursor-pointer hover:bg-white/5">
+                    <select name="projectType" value={formData.projectType} onChange={handleInputChange} className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg appearance-none cursor-pointer hover:bg-white/5">
                       <option value="" className="text-black">Select an option</option>
                       <option value="film" className="text-black">Film / TV choreography</option>
                       <option value="luxury-wedding" className="text-black">Luxury wedding</option>
@@ -417,10 +466,10 @@ export default function Home() {
 
                 <div className="space-y-3">
                   <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-slate-muted)] pl-2">Message</label>
-                  <textarea rows={5} className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg resize-none hover:bg-white/5" placeholder="Tell us about your vision..."></textarea>
+                  <textarea rows={5} className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg resize-none hover:bg-white/5" name="message" value={formData.message} onChange={handleInputChange} placeholder="Tell us about your vision..."></textarea>
                 </div>
 
-                <button type="button" className="btn-shine w-full bg-gradient-to-r from-[var(--color-electric-blue)] via-[var(--color-violet-accent)] to-[var(--color-magenta-pink)] text-white py-5 rounded-2xl font-bold transition-all duration-500 shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:shadow-[0_0_40px_rgba(124,58,237,0.6)] hover:-translate-y-1 text-base md:text-lg flex justify-center items-center gap-2 group">
+                <button type="button" onClick={handleWhatsAppInquiry} className="btn-shine w-full bg-gradient-to-r from-[var(--color-electric-blue)] via-[var(--color-violet-accent)] to-[var(--color-magenta-pink)] text-white py-5 rounded-2xl font-bold transition-all duration-500 shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:shadow-[0_0_40px_rgba(124,58,237,0.6)] hover:-translate-y-1 text-base md:text-lg flex justify-center items-center gap-2 group">
                   Send Inquiry
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
                 </button>
@@ -443,13 +492,13 @@ export default function Home() {
           </div>
 
           <div className="flex gap-5">
-            <a href="#" className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-[var(--color-pearl-text)] hover:text-white hover:bg-[var(--color-magenta-pink)] hover:scale-110 hover:shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:border-transparent transition-all duration-300 shadow-sm border-white/10 group">
+            <a href="https://www.instagram.com/dhiiraj_bhalerao?igsh=bGxveWw3NzZrZXNl" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-[var(--color-pearl-text)] hover:text-white hover:bg-[var(--color-magenta-pink)] hover:scale-110 hover:shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:border-transparent transition-all duration-300 shadow-sm border-white/10 group">
               <Instagram size={20} className="group-hover:animate-pulse" />
             </a>
-            <a href="#" className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-[var(--color-pearl-text)] hover:text-white hover:bg-[#FF0000] hover:scale-110 hover:shadow-[0_0_20px_rgba(255,0,0,0.5)] hover:border-transparent transition-all duration-300 shadow-sm border-white/10 group">
+            <a href="https://www.youtube.com/@dhirajbhalerao8577" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-[var(--color-pearl-text)] hover:text-white hover:bg-[#FF0000] hover:scale-110 hover:shadow-[0_0_20px_rgba(255,0,0,0.5)] hover:border-transparent transition-all duration-300 shadow-sm border-white/10 group">
               <Youtube size={20} className="group-hover:animate-pulse" />
             </a>
-            <a href="#" className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-[var(--color-pearl-text)] hover:text-white hover:bg-[var(--color-electric-blue)] hover:scale-110 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:border-transparent transition-all duration-300 shadow-sm border-white/10 group">
+            <a href="mailto:dhiraj.checks@gmail.com" className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-[var(--color-pearl-text)] hover:text-white hover:bg-[var(--color-electric-blue)] hover:scale-110 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:border-transparent transition-all duration-300 shadow-sm border-white/10 group">
               <Mail size={20} className="group-hover:animate-pulse" />
             </a>
           </div>
