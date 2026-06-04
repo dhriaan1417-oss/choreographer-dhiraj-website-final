@@ -16,7 +16,15 @@ import {
   Trophy,
   Clapperboard,
   Sparkle,
-  Smartphone
+  Smartphone,
+  Video,
+  Tv,
+  Crown,
+  Music,
+  Users,
+  Mic,
+  Presentation,
+  Film
 } from 'lucide-react';
 
 const fadeInUp = {
@@ -82,8 +90,8 @@ Message: ${formData.message}`;
             className="text-xl md:text-2xl font-bold tracking-tight text-[var(--color-pearl-text)] flex items-center gap-2 group"
           >
             <Sparkle className="w-5 h-5 text-[var(--color-electric-blue)] group-hover:text-[var(--color-magenta-pink)] transition-colors hidden sm:block" />
-            <span className="group-hover:text-gradient-animated transition-all duration-500 font-display">
-              DHIRAJ
+            <span className="text-gradient-animated btn-shine drop-shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-500 font-display md:text-2xl text-lg">
+              DHIRAJ BHALERAO
             </span>
           </motion.div>
           <div className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wider text-[var(--color-slate-muted)] uppercase">
@@ -117,10 +125,10 @@ Message: ${formData.message}`;
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-8 md:mb-12 inline-flex items-center justify-center"
+              className="mb-8 md:mb-12 inline-flex items-center justify-center animated-gradient-border p-[1px] rounded-full group"
             >
-              <div className="glass-panel px-6 py-2.5 rounded-full border border-white/20 shadow-[0_0_20px_rgba(124,58,237,0.3)] glow-sweep">
-                <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-gradient-award">
+              <div className="glass-panel bg-black/40 px-6 py-2.5 rounded-full relative z-10 glow-sweep shadow-[0_0_20px_rgba(124,58,237,0.3)]">
+                <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-gradient-award group-hover:text-white transition-colors duration-300 relative z-20">
                   Zee Gaurav Award Winner — Best Choreographer of the Year 2025–2026
                 </span>
               </div>
@@ -131,15 +139,17 @@ Message: ${formData.message}`;
               variants={staggerContainer}
               initial="hidden"
               animate="visible"
-              className="flex flex-col items-center mb-10 md:mb-14"
+              className="flex flex-col items-center mb-10 md:mb-14 relative"
             >
-              <div className="overflow-hidden">
-                <motion.h1 variants={heroTextReveal} className="text-clamp-hero-name font-bold font-display text-[var(--color-pearl-text)] drop-shadow-2xl">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[var(--color-magenta-pink)]/20 blur-[100px] rounded-full z-0 pointer-events-none"></div>
+
+              <div className="overflow-hidden relative z-10">
+                <motion.h1 variants={heroTextReveal} className="text-clamp-hero-name font-bold font-display text-gradient-animated drop-shadow-[0_0_30px_rgba(236,72,153,0.3)] tracking-widest text-center">
                   DHIRAJ BHALERAO
                 </motion.h1>
               </div>
-              <div className="overflow-hidden mt-2 md:mt-4">
-                <motion.h2 variants={heroTextReveal} className="text-clamp-hero-sub font-bold uppercase text-gradient-animated">
+              <div className="overflow-hidden mt-2 md:mt-4 relative z-10">
+                <motion.h2 variants={heroTextReveal} className="text-clamp-hero-sub font-bold uppercase text-gradient-animated drop-shadow-[0_0_30px_rgba(236,72,153,0.3)] tracking-[0.2em] text-center">
                   Choreographer
                 </motion.h2>
               </div>
@@ -156,10 +166,10 @@ Message: ${formData.message}`;
                 <motion.div
                   key={i}
                   variants={fadeInUp}
-                  className="gradient-border-wrap rounded-full p-[1px] group cursor-default"
+                  className="animated-gradient-border rounded-full p-[1px] group cursor-default hover:-translate-y-1 transition-transform duration-300"
                 >
-                  <div className="bg-[var(--color-midnight-navy)]/80 backdrop-blur-md px-6 py-2.5 rounded-full text-[11px] md:text-sm font-bold tracking-[0.15em] uppercase text-[var(--color-pearl-text)] group-hover:bg-transparent group-hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] transition-all duration-300">
-                    <span className="group-hover:text-gradient-animated transition-all duration-300">{tag}</span>
+                  <div className="glass-panel bg-black/40 px-6 py-2.5 rounded-full text-[11px] md:text-sm font-bold tracking-[0.15em] uppercase text-[var(--color-pearl-text)] hover:shadow-[0_0_20px_rgba(236,72,153,0.5)] transition-all duration-300 btn-shine relative z-10 overflow-hidden">
+                    <span className="group-hover:text-gradient-animated transition-all duration-300 relative z-20">{tag}</span>
                   </div>
                 </motion.div>
               ))}
@@ -378,20 +388,38 @@ Message: ${formData.message}`;
           </motion.h2>
           <motion.div
             variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-4 md:gap-5"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 w-full max-w-6xl mx-auto"
           >
              {[
-               "Film choreography", "Television choreography", "Luxury wedding choreography",
-               "Sangeet choreography", "Bride & groom entry", "Varmala concepts",
-               "Family performance training", "Live show choreography", "Celebrity event choreography",
-               "Music video movement direction", "Corporate shows", "Stage performance direction"
+               { name: "Film choreography", icon: <Film className="w-5 h-5 text-[var(--color-electric-blue)]" /> },
+               { name: "Television choreography", icon: <Tv className="w-5 h-5 text-[var(--color-magenta-pink)]" /> },
+               { name: "Luxury wedding", icon: <Crown className="w-5 h-5 text-[var(--color-warm-orange)]" /> },
+               { name: "Sangeet choreography", icon: <Music className="w-5 h-5 text-[var(--color-violet-accent)]" /> },
+               { name: "Bride & groom entry", icon: <Heart className="w-5 h-5 text-[var(--color-magenta-pink)]" /> },
+               { name: "Varmala concepts", icon: <Star className="w-5 h-5 text-[var(--color-warm-orange)]" /> },
+               { name: "Family training", icon: <Users className="w-5 h-5 text-[var(--color-electric-blue)]" /> },
+               { name: "Live show choreography", icon: <Mic className="w-5 h-5 text-[var(--color-violet-accent)]" /> },
+               { name: "Celebrity events", icon: <Sparkle className="w-5 h-5 text-[var(--color-magenta-pink)]" /> },
+               { name: "Music video direction", icon: <Video className="w-5 h-5 text-[var(--color-electric-blue)]" /> },
+               { name: "Corporate shows", icon: <Presentation className="w-5 h-5 text-[var(--color-warm-orange)]" /> },
+               { name: "Stage performance", icon: <Clapperboard className="w-5 h-5 text-[var(--color-violet-accent)]" /> }
              ].map((service, i) => (
                <motion.div
                  variants={fadeInUp}
                  key={i}
-                 className="glass-panel px-6 md:px-8 py-3 md:py-4 rounded-full text-xs md:text-sm font-bold tracking-wide text-[var(--color-pearl-text)] hover:bg-[var(--color-electric-blue)] hover:border-[var(--color-electric-blue)] hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] transition-all duration-300 cursor-default shadow-md border-white/10 hover:-translate-y-1"
+                 className="animated-gradient-border rounded-2xl p-[1px] group cursor-default"
                >
-                 {service}
+                 <div className="glass-panel p-5 md:p-6 rounded-2xl bg-[#0E2A5C]/40 hover:bg-[#0E2A5C]/80 transition-all duration-300 shadow-md border-white/5 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] relative overflow-hidden h-full flex items-center gap-4 z-10">
+                   {/* Glowing Blob */}
+                   <div className="absolute -right-4 -top-4 w-16 h-16 bg-[var(--color-electric-blue)]/10 blur-xl rounded-full group-hover:bg-[var(--color-magenta-pink)]/20 transition-colors duration-500 z-0"></div>
+
+                   <div className="w-10 h-10 rounded-xl bg-black/30 flex items-center justify-center border border-white/5 relative z-10 group-hover:scale-110 transition-transform duration-300">
+                     {service.icon}
+                   </div>
+                   <div className="text-sm font-bold tracking-wide text-[var(--color-pearl-text)] relative z-10">
+                     {service.name}
+                   </div>
+                 </div>
                </motion.div>
              ))}
           </motion.div>
