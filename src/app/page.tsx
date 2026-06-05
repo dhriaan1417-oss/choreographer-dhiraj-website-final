@@ -475,33 +475,78 @@ Message: ${formData.message}`;
       </section>
 
       {/* Services Grid */}
-      <section id="services" className="py-24 md:py-32 px-6 relative border-y border-[var(--color-electric-blue)]/20 bg-[#0E2A5C]/30 backdrop-blur-md">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--color-violet-accent)]/5 to-transparent"></div>
+      <section id="services" className="py-32 md:py-40 px-6 relative border-y border-[var(--color-electric-blue)]/20 bg-[#0E2A5C]/30 backdrop-blur-md overflow-hidden scroll-mt-24">
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-midnight-navy)] via-[var(--color-violet-accent)]/5 to-[var(--color-midnight-navy)]"></div>
+
+        {/* Animated background elements */}
+        <div className="absolute top-1/4 left-10 w-72 h-72 bg-[var(--color-electric-blue)]/10 rounded-full blur-[100px] animate-blob"></div>
+        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-[var(--color-magenta-pink)]/10 rounded-full blur-[120px] animate-blob animation-delay-2000"></div>
+
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.h2
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
-            className="text-clamp-h3 font-bold mb-16 text-center text-gradient-animated"
-          >
-            Comprehensive Expertise
-          </motion.h2>
+          <div className="text-center mb-16 md:mb-24">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeInUp}
+              className="inline-flex items-center justify-center mb-6"
+            >
+              <div className="glass-panel px-6 py-2.5 rounded-full border border-white/20 shadow-[0_0_20px_rgba(59,130,246,0.3)] glow-sweep">
+                <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-gradient-subtle flex items-center gap-2">
+                  <Star className="w-3 h-3 md:w-4 md:h-4 fill-[var(--color-electric-blue)]" />
+                  What We Do
+                  <Star className="w-3 h-3 md:w-4 md:h-4 fill-[var(--color-electric-blue)]" />
+                </span>
+              </div>
+            </motion.div>
+
+            <motion.h2
+              initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}
+              className="text-clamp-h2 font-bold font-display text-[var(--color-pearl-text)]"
+            >
+              Comprehensive <span className="text-gradient-animated">Expertise</span>
+            </motion.h2>
+          </div>
+
           <motion.div
-            variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-4 md:gap-5"
+            variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
           >
              {[
-               "Film choreography", "Television choreography", "Luxury wedding choreography",
-               "Sangeet choreography", "Bride & groom entry", "Varmala concepts",
-               "Family performance training", "Live show choreography", "Celebrity event choreography",
-               "Music video movement direction", "Corporate shows", "Stage performance direction"
-             ].map((service, i) => (
-               <motion.div
-                 variants={fadeInUp}
-                 key={i}
-                 className="glass-panel px-6 md:px-8 py-3 md:py-4 rounded-full text-xs md:text-sm font-bold tracking-wide text-[var(--color-pearl-text)] hover:bg-[var(--color-electric-blue)] hover:border-[var(--color-electric-blue)] hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] transition-all duration-300 cursor-default shadow-md border-white/10 hover:-translate-y-1"
-               >
-                 {service}
-               </motion.div>
-             ))}
+               { title: "Film choreography", icon: Clapperboard, color: "var(--color-electric-blue)" },
+               { title: "Television choreography", icon: Play, color: "var(--color-magenta-pink)" },
+               { title: "Luxury wedding", icon: Heart, color: "var(--color-warm-orange)" },
+               { title: "Sangeet choreography", icon: Star, color: "var(--color-violet-accent)" },
+               { title: "Bride & groom entry", icon: Sparkle, color: "var(--color-electric-blue)" },
+               { title: "Varmala concepts", icon: Camera, color: "var(--color-magenta-pink)" },
+               { title: "Family training", icon: Heart, color: "var(--color-warm-orange)" },
+               { title: "Live show choreography", icon: Trophy, color: "var(--color-violet-accent)" },
+               { title: "Celebrity event", icon: Star, color: "var(--color-electric-blue)" },
+               { title: "Music video direction", icon: Play, color: "var(--color-magenta-pink)" },
+               { title: "Corporate shows", icon: Clapperboard, color: "var(--color-warm-orange)" },
+               { title: "Stage direction", icon: Sparkle, color: "var(--color-violet-accent)" }
+             ].map((service, i) => {
+               const Icon = service.icon;
+               return (
+                 <motion.div
+                   variants={fadeInUp}
+                   key={i}
+                   className="relative group cursor-pointer"
+                 >
+                   <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-electric-blue)] via-[var(--color-violet-accent)] to-[var(--color-magenta-pink)] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"></div>
+                   <div className="relative h-full glass-panel p-6 md:p-8 rounded-2xl border border-white/10 bg-[#07112F]/80 backdrop-blur-xl hover:bg-[#07112F]/90 transition-all duration-500 flex flex-col items-center text-center justify-center gap-4 overflow-hidden z-10 group-hover:-translate-y-2 group-hover:border-transparent">
+
+                     {/* Inner shine sweep */}
+                     <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-20deg] group-hover:animate-shine-sweep"></div>
+
+                     <div className="w-14 h-14 rounded-full glass-panel flex items-center justify-center mb-2 relative z-10 bg-white/5 border border-white/10 shadow-[0_0_15px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500" style={{ boxShadow: `0 0 20px ${service.color}40`, borderColor: `${service.color}40` }}>
+                       <Icon className="w-6 h-6 transition-colors duration-300" style={{ color: service.color, filter: `drop-shadow(0 0 8px ${service.color})` }} />
+                     </div>
+                     <h3 className="text-sm md:text-base font-bold tracking-wide text-[var(--color-pearl-text)] relative z-10 group-hover:text-white transition-colors duration-300">{service.title}</h3>
+                   </div>
+                 </motion.div>
+               );
+             })}
           </motion.div>
         </div>
       </section>
