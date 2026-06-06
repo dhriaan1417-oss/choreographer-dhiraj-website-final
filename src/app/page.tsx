@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   Play,
@@ -283,13 +284,41 @@ Message: ${formData.message}`;
 
                     {/* Gallery Slider Placeholder */}
                     <div className="flex gap-4 overflow-x-auto pb-4 snap-x hide-scrollbar">
-                      {[1, 2, 3].map((i) => (
-                        <div key={i} className="min-w-[140px] h-[100px] md:min-w-[180px] md:h-[120px] glass-panel rounded-xl flex-shrink-0 snap-center bg-white/5 border-white/10 flex flex-col items-center justify-center relative overflow-hidden group/thumb cursor-pointer hover:border-white/30 transition-colors">
-                          <Camera className="w-6 h-6 text-white/20 mb-2 group-hover/thumb:scale-110 transition-transform duration-300" />
-                          <span className="text-[10px] uppercase tracking-wider text-white/40 font-bold">Gallery Image {i}</span>
-                          <div className="absolute inset-0 bg-[var(--color-electric-blue)]/0 group-hover/thumb:bg-[var(--color-electric-blue)]/10 transition-colors duration-300"></div>
-                        </div>
-                      ))}
+                      <div className="min-w-[140px] h-[100px] md:min-w-[180px] md:h-[120px] glass-panel rounded-xl flex-shrink-0 snap-center bg-[#07112F]/50 border-white/10 relative overflow-hidden group/thumb cursor-pointer hover:border-white/30 transition-colors">
+                        <Image
+                          src="/images/awards/award-stage.jpg"
+                          alt="Award Stage Moment"
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover/thumb:scale-110"
+                          sizes="(max-width: 768px) 33vw, 20vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 bg-[var(--color-electric-blue)]/0 group-hover/thumb:bg-[var(--color-electric-blue)]/20 transition-colors duration-300 mix-blend-overlay"></div>
+                      </div>
+
+                      <div className="min-w-[140px] h-[100px] md:min-w-[180px] md:h-[120px] glass-panel rounded-xl flex-shrink-0 snap-center bg-[#07112F]/50 border-white/10 relative overflow-hidden group/thumb cursor-pointer hover:border-white/30 transition-colors">
+                        <Image
+                          src="/images/awards/jarann-poster.jpg"
+                          alt="Jaraan Movie Poster"
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover/thumb:scale-110"
+                          sizes="(max-width: 768px) 33vw, 20vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 bg-[var(--color-magenta-pink)]/0 group-hover/thumb:bg-[var(--color-magenta-pink)]/20 transition-colors duration-300 mix-blend-overlay"></div>
+                      </div>
+
+                      <div className="min-w-[140px] h-[100px] md:min-w-[180px] md:h-[120px] glass-panel rounded-xl flex-shrink-0 snap-center bg-[#07112F]/50 border-white/10 relative overflow-hidden group/thumb cursor-pointer hover:border-white/30 transition-colors">
+                        <Image
+                          src="/images/awards/award-poster.png"
+                          alt="INCA Award Nomination"
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover/thumb:scale-110"
+                          sizes="(max-width: 768px) 33vw, 20vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 bg-[var(--color-warm-orange)]/0 group-hover/thumb:bg-[var(--color-warm-orange)]/20 transition-colors duration-300 mix-blend-overlay"></div>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
