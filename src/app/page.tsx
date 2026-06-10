@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Image from "next/image";
 import {
   Play,
   Star,
@@ -199,32 +200,147 @@ Message: ${formData.message}`;
       </section>
 
       {/* Award Section */}
-      <section id="award" className="py-24 md:py-32 px-6 relative z-20">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
-            className="glass-panel rounded-[2rem] p-8 md:p-16 text-center shimmer-sweep relative overflow-hidden shadow-[0_20px_60px_-15px_rgba(124,58,237,0.4)] border-white/20 bg-[#0E2A5C]/50 backdrop-blur-3xl group"
-          >
-            <div className="absolute -top-40 -right-40 w-96 h-96 bg-[var(--color-electric-blue)] opacity-20 rounded-full blur-3xl group-hover:opacity-40 transition-all duration-700"></div>
-            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[var(--color-magenta-pink)] opacity-20 rounded-full blur-3xl group-hover:opacity-40 transition-all duration-700"></div>
+      <section id="award" className="py-24 md:py-32 px-6 relative z-20 bg-[var(--color-midnight-navy)]/80 backdrop-blur-md border-y border-[var(--color-electric-blue)]/10">
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute top-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-[var(--color-violet-accent)]/10 rounded-full blur-[120px]"></div>
+          <div className="absolute bottom-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-[var(--color-magenta-pink)]/10 rounded-full blur-[120px]"></div>
+        </div>
 
-            <div className="relative z-10">
-              <div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-8 glass-panel rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(249,115,22,0.3)] bg-white/5 border border-[var(--color-warm-orange)]/30 group-hover:scale-110 transition-transform duration-500">
-                <Trophy className="w-10 h-10 md:w-12 md:h-12 text-[var(--color-warm-orange)] drop-shadow-[0_0_10px_rgba(249,115,22,0.6)]" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16 md:mb-24">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeInUp}
+              className="inline-flex items-center justify-center mb-6"
+            >
+              <div className="glass-panel px-6 py-2.5 rounded-full border border-white/20 shadow-[0_0_20px_rgba(249,115,22,0.3)] glow-sweep">
+                <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-gradient-award flex items-center gap-2">
+                  <Star className="w-3 h-3 md:w-4 md:h-4 fill-[var(--color-warm-orange)]" />
+                  Award-Winning Choreographer
+                  <Star className="w-3 h-3 md:w-4 md:h-4 fill-[var(--color-warm-orange)]" />
+                </span>
               </div>
-              <h3 className="text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-[var(--color-magenta-pink)] mb-6">Award Highlight</h3>
-              <h2 className="text-clamp-h2 font-bold mb-6 text-gradient-animated">
-                Best Choreographer <br className="hidden md:block"/> of the Year
-              </h2>
-              <p className="text-xl md:text-3xl font-semibold mb-10 text-[var(--color-pearl-text)]">Zee Gaurav Award 2025–2026</p>
-              <div className="inline-block glass-panel px-6 md:px-8 py-4 rounded-full border-white/10 shadow-sm bg-white/5">
-                <p className="text-xs md:text-sm font-bold text-[var(--color-slate-muted)] tracking-wider">Choreographed &quot;Jaraan&quot; from the Marathi movie Jaraan</p>
+            </motion.div>
+
+            <motion.h2
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeInUp}
+              className="text-clamp-h2 font-bold mb-4 font-display text-[var(--color-pearl-text)]"
+            >
+              Awards & <span className="text-gradient-animated">Recognition</span>
+            </motion.h2>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-8 md:gap-12 items-center">
+            {/* Left: Featured Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="lg:col-span-5 h-[400px] md:h-[600px] rounded-[2rem] md:rounded-[3rem] p-[2px] animated-gradient-border"
+            >
+              <div className="w-full h-full glass-panel rounded-[calc(2rem-2px)] md:rounded-[calc(3rem-2px)] bg-[#07112F]/90 backdrop-blur-3xl overflow-hidden flex flex-col items-center justify-center relative group">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                <Image
+                  src="/images/awards/award-trophy.jpg"
+                  alt="Dhiraj Bhalerao holding the prestigious Zee Chitra Gaurav Award"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <p className="text-xs uppercase tracking-widest text-white/30 font-bold z-20 absolute top-4 left-4">Main Award Portrait</p>
+                <div className="absolute bottom-8 left-8 right-8 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-4 group-hover:translate-y-0">
+                  <div className="h-1 w-12 bg-gradient-to-r from-[var(--color-warm-orange)] to-[var(--color-magenta-pink)] rounded-full mb-2"></div>
+                  <p className="text-sm font-semibold text-white">Dhiraj Bhalerao holding the prestigious Zee Chitra Gaurav Award</p>
+                </div>
               </div>
+            </motion.div>
+
+            {/* Right: Content & Gallery */}
+            <div className="lg:col-span-7 flex flex-col justify-center space-y-12">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="space-y-8"
+              >
+                {/* Main Award Spotlight */}
+                <motion.div variants={fadeInUp} className="glass-panel p-8 md:p-10 rounded-3xl border-white/10 relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--color-warm-orange)]/10 rounded-full blur-3xl group-hover:bg-[var(--color-magenta-pink)]/20 transition-colors duration-700"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-14 h-14 rounded-full glass-panel flex items-center justify-center bg-white/5 border border-[var(--color-warm-orange)]/30 shadow-[0_0_20px_rgba(249,115,22,0.2)] group-hover:scale-110 transition-transform duration-500">
+                        <Trophy className="w-6 h-6 text-[var(--color-warm-orange)] drop-shadow-[0_0_10px_rgba(249,115,22,0.6)]" />
+                      </div>
+                      <h3 className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-[var(--color-warm-orange)]">Featured Achievement</h3>
+                    </div>
+
+                    <h4 className="text-2xl md:text-4xl font-bold mb-3 text-[var(--color-pearl-text)] leading-tight">Best Choreographer of the Year</h4>
+                    <p className="text-lg md:text-xl font-semibold text-gradient-award mb-6">Zee Chitra Gaurav Award 2025–2026</p>
+
+                    <p className="text-[var(--color-slate-muted)] text-base leading-relaxed mb-8">
+                      For choreographing the song &quot;Jaraan&quot; from the Marathi movie &quot;Jaraan&quot;. Recognized for outstanding choreography work in Marathi cinema, this award marks a major milestone in Dhiraj Bhalerao&apos;s creative journey.
+                    </p>
+
+                    {/* Gallery Slider */}
+                    <div className="flex gap-4 overflow-x-auto pb-4 snap-x hide-scrollbar">
+                      <div className="min-w-[140px] h-[100px] md:min-w-[180px] md:h-[120px] glass-panel rounded-xl flex-shrink-0 snap-center bg-[#07112F]/50 border-white/10 relative overflow-hidden group/thumb cursor-pointer hover:border-white/30 transition-colors">
+                        <Image
+                          src="/images/awards/award-stage.jpg"
+                          alt="Award Stage Moment"
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover/thumb:scale-110"
+                          sizes="(max-width: 768px) 33vw, 20vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 bg-[var(--color-electric-blue)]/0 group-hover/thumb:bg-[var(--color-electric-blue)]/20 transition-colors duration-300 mix-blend-overlay"></div>
+                      </div>
+
+                      <div className="min-w-[140px] h-[100px] md:min-w-[180px] md:h-[120px] glass-panel rounded-xl flex-shrink-0 snap-center bg-[#07112F]/50 border-white/10 relative overflow-hidden group/thumb cursor-pointer hover:border-white/30 transition-colors">
+                        <Image
+                          src="/images/awards/jarann-poster.jpg"
+                          alt="Jaraan Movie Poster"
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover/thumb:scale-110"
+                          sizes="(max-width: 768px) 33vw, 20vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 bg-[var(--color-magenta-pink)]/0 group-hover/thumb:bg-[var(--color-magenta-pink)]/20 transition-colors duration-300 mix-blend-overlay"></div>
+                      </div>
+
+                      <div className="min-w-[140px] h-[100px] md:min-w-[180px] md:h-[120px] glass-panel rounded-xl flex-shrink-0 snap-center bg-[#07112F]/50 border-white/10 relative overflow-hidden group/thumb cursor-pointer hover:border-white/30 transition-colors">
+                        <Image
+                          src="/images/awards/award-poster.png"
+                          alt="INCA Award Nomination"
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover/thumb:scale-110"
+                          sizes="(max-width: 768px) 33vw, 20vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 bg-[var(--color-warm-orange)]/0 group-hover/thumb:bg-[var(--color-warm-orange)]/20 transition-colors duration-300 mix-blend-overlay"></div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Secondary Award */}
+                <motion.div variants={fadeInUp} className="glass-panel p-6 rounded-2xl border-white/5 bg-white/5 flex items-center gap-6 group hover:bg-white/10 transition-colors duration-300">
+                  <div className="w-12 h-12 rounded-full bg-[var(--color-electric-blue)]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--color-electric-blue)]/20 transition-colors border border-[var(--color-electric-blue)]/20">
+                    <Star className="w-5 h-5 text-[var(--color-electric-blue)] drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
+                  </div>
+                  <div>
+                    <h5 className="font-bold text-[var(--color-pearl-text)] text-sm md:text-base">INCA Award</h5>
+                    <p className="text-xs md:text-sm text-[var(--color-slate-muted)] mt-1 font-medium">Pan India Best Choreographer Nomination</p>
+                  </div>
+                </motion.div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -321,7 +437,7 @@ Message: ${formData.message}`;
         </div>
       </section>
 
-      {/* Film Choreography & Music Videos */}
+      {/* Portfolio Intentional CSS Framework */}
       <section id="work" className="py-24 md:py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -331,141 +447,41 @@ Message: ${formData.message}`;
             variants={fadeInUp}
             className="mb-16 flex items-end justify-between"
           >
-            <h2 className="text-clamp-h2 font-bold text-gradient-animated">Film Choreography & Music Videos</h2>
+            <h2 className="text-clamp-h2 font-bold text-gradient-animated">Signature Work</h2>
           </motion.div>
 
-          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="flex flex-col gap-12">
-
-            {/* Featured Video: Jaraan */}
-            <motion.div variants={fadeInUp} className="group cursor-pointer">
-              <a href="https://youtu.be/PmcLtM2GdgU?si=7IALLbjUl2HH0Gie" target="_blank" rel="noopener noreferrer" className="block relative">
-                <div className="aspect-video md:aspect-[21/9] rounded-[2rem] relative overflow-hidden shadow-lg group-hover:shadow-[0_20px_60px_-15px_var(--color-electric-blue)] transition-all duration-700 bg-[var(--color-deep-denim)]/20 border border-white/10 group-hover:border-white/30 cinematic-frame flex flex-col items-center justify-center animated-gradient-border p-[2px]">
-                   <img src="https://img.youtube.com/vi/PmcLtM2GdgU/maxresdefault.jpg" alt="Jaraan" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700 group-hover:scale-105" />
+          <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="grid md:grid-cols-2 gap-8 md:gap-12">
+            {[
+              { title: "Film Choreography Reel", status: "Coming soon", highlight: "var(--color-electric-blue)" },
+              { title: "Luxury Wedding Moments", status: "Gallery will be added soon", highlight: "var(--color-magenta-pink)" },
+              { title: "Celebrity Highlights", status: "Showcase coming soon", highlight: "var(--color-violet-accent)" },
+              { title: "Behind The Scenes", status: "Videos will be added soon", highlight: "var(--color-warm-orange)" }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="group cursor-pointer"
+              >
+                <div className={`aspect-[4/3] md:aspect-[16/10] rounded-[2rem] mb-6 relative overflow-hidden shadow-lg group-hover:shadow-[0_20px_60px_-15px_${item.highlight}] transition-all duration-700 bg-[var(--color-deep-denim)]/20 border border-white/10 group-hover:border-white/30 cinematic-frame flex flex-col items-center justify-center`}>
 
                    {/* Animated cinematic gradient mesh background */}
-                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[var(--color-electric-blue)]/20 opacity-30 group-hover:opacity-80 transition-opacity duration-700 z-0"></div>
+                   <div className={`absolute inset-0 bg-gradient-to-br from-transparent to-[${item.highlight}]/20 opacity-30 group-hover:opacity-80 transition-opacity duration-700 z-0`}></div>
 
                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-700 z-10"></div>
 
-                   <div className="absolute top-6 left-6 z-20 flex flex-col gap-2">
-                     <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[var(--color-electric-blue)] to-[var(--color-magenta-pink)] text-white text-xs font-bold tracking-wider uppercase shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-                       Featured Work
-                     </span>
-                     <span className="px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[#FFD700] text-xs font-bold tracking-wider uppercase shadow-lg">
-                       🏆 Zee Gaurav Award-Winning Work
-                     </span>
+                   <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full glass-panel flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[${item.highlight}]/20 transition-all duration-500 z-20 bg-white/10 border-white/20 backdrop-blur-md group-hover:shadow-[0_0_30px_${item.highlight}] pulse-glow`}>
+                      <Play className="w-6 h-6 md:w-8 md:h-8 text-white ml-1" fill="currentColor" />
                    </div>
 
-                   <div className="w-20 h-20 md:w-24 md:h-24 rounded-full glass-panel flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[var(--color-electric-blue)]/20 transition-all duration-500 z-20 bg-white/10 border-white/20 backdrop-blur-md group-hover:shadow-[0_0_30px_var(--color-electric-blue)] pulse-glow">
-                      <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-2" fill="currentColor" />
-                   </div>
                 </div>
-              </a>
-              <div className="mt-6 text-center">
-                <h3 className="text-3xl md:text-4xl font-bold mb-2 text-[var(--color-pearl-text)] group-hover:text-[var(--color-electric-blue)] transition-colors duration-500">Jaraan</h3>
-                <p className="text-[var(--color-slate-muted)] font-medium text-base md:text-lg mb-2">Project: Jaraan (Marathi Movie) • Role: Choreographer</p>
-                <p className="text-[var(--color-magenta-pink)] font-bold text-sm md:text-base italic">&quot;Award-winning choreography that earned Dhiraj Bhalerao the Zee Gaurav Award 2025–2026 for Best Choreographer of the Year.&quot;</p>
-              </div>
-            </motion.div>
-
-            {/* Other Videos Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  id: 'mOWK4_iouFU',
-                  title: 'Nashu Mainu',
-                  project: 'One Day',
-                  artist: 'Esha Gupta',
-                  role: 'Choreographer',
-                  category: 'Film Song',
-                  url: 'https://youtu.be/mOWK4_iouFU?si=TT8O2c4qpk9slefn',
-                  highlight: 'var(--color-magenta-pink)'
-                },
-                {
-                  id: 'mICmUiHgLaU',
-                  title: 'Kanha Re',
-                  project: 'Devotional Video Song',
-                  role: 'Choreographer',
-                  category: 'Devotional Song',
-                  url: 'https://youtu.be/mICmUiHgLaU?si=34wrMAThvdfMWyIB',
-                  highlight: 'var(--color-violet-accent)'
-                },
-                {
-                  id: '8pmAid1ERmg',
-                  title: 'Premika',
-                  project: 'I Prem U',
-                  artist: 'Kaydu Lohar and Abhijeet Amkar',
-                  role: 'Choreographer',
-                  category: 'Film Song',
-                  url: 'https://youtu.be/8pmAid1ERmg?si=t3z9t8SdBTL83dHv',
-                  highlight: 'var(--color-warm-orange)'
-                },
-                {
-                  id: 'iV1e3zY2Ba8',
-                  title: 'Halu Halu',
-                  project: 'I Prem U',
-                  artist: 'Kaydu Lohar and Abhijeet Amkar',
-                  role: 'Choreographer',
-                  category: 'Film Song',
-                  url: 'https://youtu.be/iV1e3zY2Ba8?si=XVBnhdM5je6YnJyh',
-                  highlight: 'var(--color-electric-blue)'
-                },
-                {
-                  id: '31uxfcxDXQo',
-                  title: 'Neta Geeta',
-                  project: 'Title Song',
-                  artist: 'Shivani Baokar',
-                  role: 'Choreographer',
-                  category: 'Title Song',
-                  url: 'https://youtu.be/31uxfcxDXQo?si=-RQGiNDesvkkAVB5',
-                  highlight: 'var(--color-magenta-pink)'
-                },
-                {
-                  id: 'QkJhBI8VQkk',
-                  title: 'Sindhi Aahiyun',
-                  project: 'Music Video',
-                  role: 'Choreographer',
-                  category: 'Music Video',
-                  url: 'https://youtu.be/QkJhBI8VQkk?si=LMw87iDgHpMTn9Gz',
-                  highlight: 'var(--color-violet-accent)'
-                }
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeInUp}
-                  className="group cursor-pointer"
-                >
-                  <a href={item.url} target="_blank" rel="noopener noreferrer" className="block">
-                    <div className={`aspect-video rounded-[1.5rem] mb-4 relative overflow-hidden shadow-lg group-hover:shadow-[0_20px_60px_-15px_${item.highlight}] transition-all duration-700 bg-[var(--color-deep-denim)]/20 border border-white/10 group-hover:border-white/30 cinematic-frame flex flex-col items-center justify-center`}>
-                       <img src={`https://img.youtube.com/vi/${item.id}/hqdefault.jpg`} alt={item.title} className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700 group-hover:scale-105" />
-
-                       <div className="absolute top-4 left-4 z-20">
-                         <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold tracking-wider uppercase">
-                           {item.category}
-                         </span>
-                       </div>
-
-                       <div className={`absolute inset-0 bg-gradient-to-br from-transparent to-[${item.highlight}]/20 opacity-30 group-hover:opacity-80 transition-opacity duration-700 z-0`}></div>
-
-                       <div className="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-colors duration-700 z-10"></div>
-
-                       <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full glass-panel flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[${item.highlight}]/20 transition-all duration-500 z-20 bg-white/10 border-white/20 backdrop-blur-md group-hover:shadow-[0_0_30px_${item.highlight}] pulse-glow`}>
-                          <Play className="w-5 h-5 md:w-6 md:h-6 text-white ml-1" fill="currentColor" />
-                       </div>
-                    </div>
-                  </a>
-                  <div>
-                    <h3 className={`text-xl md:text-2xl font-bold mb-1 text-[var(--color-pearl-text)] group-hover:text-[${item.highlight}] transition-colors duration-500`}>{item.title}</h3>
-                    <p className="text-[var(--color-slate-muted)] font-medium text-xs md:text-sm">
-                      {item.project} • {item.artist ? `${item.artist} • ` : ''}Role: {item.role}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                <h3 className={`text-2xl md:text-3xl font-bold mb-2 text-[var(--color-pearl-text)] group-hover:text-[${item.highlight}] transition-colors duration-500`}>{item.title}</h3>
+                <p className="text-[var(--color-slate-muted)] font-bold text-[10px] md:text-xs tracking-[0.2em] uppercase">{item.status}</p>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
+
       {/* Services Grid */}
       <section id="services" className="py-24 md:py-32 px-6 relative border-y border-[var(--color-electric-blue)]/20 bg-[#0E2A5C]/30 backdrop-blur-md">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--color-violet-accent)]/5 to-transparent"></div>
