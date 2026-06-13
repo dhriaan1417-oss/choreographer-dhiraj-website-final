@@ -504,12 +504,12 @@ Message: ${formData.message}`;
       </section>
 
       {/* Services Grid */}
-      <section id="services" className="py-32 md:py-40 px-6 relative border-y border-[var(--color-electric-blue)]/20 bg-[#0E2A5C]/30 backdrop-blur-md overflow-hidden scroll-mt-24">
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-midnight-navy)] via-[var(--color-violet-accent)]/5 to-[var(--color-midnight-navy)]"></div>
+      <section id="services" className="py-32 md:py-40 px-6 relative border-y border-[var(--color-electric-cyan)]/20 bg-white/40 backdrop-blur-md overflow-hidden scroll-mt-24">
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-ice-blue)] via-[var(--color-light-denim)]/10 to-[var(--color-ice-blue)]"></div>
 
         {/* Animated background elements */}
-        <div className="absolute top-1/4 left-10 w-72 h-72 bg-[var(--color-electric-blue)]/10 rounded-full blur-[100px] animate-blob"></div>
-        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-[var(--color-magenta-pink)]/10 rounded-full blur-[120px] animate-blob animation-delay-2000"></div>
+        <div className="absolute top-1/4 left-10 w-72 h-72 bg-[var(--color-electric-cyan)]/20 rounded-full blur-[100px] animate-blob"></div>
+        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-[var(--color-violet-glow)]/10 rounded-full blur-[120px] animate-blob animation-delay-2000"></div>
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16 md:mb-24">
@@ -520,18 +520,18 @@ Message: ${formData.message}`;
               variants={fadeInUp}
               className="inline-flex items-center justify-center mb-6"
             >
-              <div className="glass-panel px-6 py-2.5 rounded-full border border-white/20 shadow-[0_0_20px_rgba(59,130,246,0.3)] glow-sweep">
-                <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-gradient-subtle flex items-center gap-2">
-                  <Star className="w-3 h-3 md:w-4 md:h-4 fill-[var(--color-electric-blue)]" />
+              <div className="glass-panel px-6 py-2.5 rounded-full border border-[var(--color-electric-cyan)]/30 shadow-[0_0_20px_rgba(0,229,255,0.2)] glow-sweep bg-white/60">
+                <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-[var(--color-royal-blue)] flex items-center gap-2">
+                  <Star className="w-3 h-3 md:w-4 md:h-4 fill-[var(--color-electric-cyan)] text-[var(--color-electric-cyan)]" />
                   What We Do
-                  <Star className="w-3 h-3 md:w-4 md:h-4 fill-[var(--color-electric-blue)]" />
+                  <Star className="w-3 h-3 md:w-4 md:h-4 fill-[var(--color-electric-cyan)] text-[var(--color-electric-cyan)]" />
                 </span>
               </div>
             </motion.div>
 
             <motion.h2
               initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp}
-              className="text-clamp-h2 font-bold font-display text-[var(--color-pearl-text)]"
+              className="text-clamp-h2 font-bold font-display text-[var(--color-deep-navy)]"
             >
               Comprehensive <span className="text-gradient-animated">Expertise</span>
             </motion.h2>
@@ -539,39 +539,58 @@ Message: ${formData.message}`;
 
           <motion.div
             variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
+            className="flex flex-wrap justify-center gap-4 md:gap-6"
           >
              {[
-               { title: "Film choreography", icon: Clapperboard, color: "var(--color-electric-blue)" },
-               { title: "Television choreography", icon: Play, color: "var(--color-magenta-pink)" },
-               { title: "Luxury wedding", icon: Heart, color: "var(--color-warm-orange)" },
-               { title: "Sangeet choreography", icon: Star, color: "var(--color-violet-accent)" },
-               { title: "Bride & groom entry", icon: Sparkle, color: "var(--color-electric-blue)" },
-               { title: "Varmala concepts", icon: Camera, color: "var(--color-magenta-pink)" },
-               { title: "Family training", icon: Heart, color: "var(--color-warm-orange)" },
-               { title: "Live show choreography", icon: Trophy, color: "var(--color-violet-accent)" },
-               { title: "Celebrity event", icon: Star, color: "var(--color-electric-blue)" },
-               { title: "Music video direction", icon: Play, color: "var(--color-magenta-pink)" },
-               { title: "Corporate shows", icon: Clapperboard, color: "var(--color-warm-orange)" },
-               { title: "Stage direction", icon: Sparkle, color: "var(--color-violet-accent)" }
+               { title: "Film choreography", icon: Clapperboard, color: "var(--color-royal-blue)", size: "large" },
+               { title: "Television choreography", icon: Play, color: "var(--color-electric-cyan)", size: "medium" },
+               { title: "Luxury wedding", icon: Heart, color: "var(--color-violet-glow)", size: "large" },
+               { title: "Sangeet choreography", icon: Star, color: "var(--color-light-denim)", size: "medium" },
+               { title: "Bride & groom entry", icon: Sparkle, color: "var(--color-royal-blue)", size: "small" },
+               { title: "Varmala concepts", icon: Camera, color: "var(--color-electric-cyan)", size: "small" },
+               { title: "Family training", icon: Heart, color: "var(--color-violet-glow)", size: "small" },
+               { title: "Live show choreography", icon: Trophy, color: "var(--color-royal-blue)", size: "large" },
+               { title: "Celebrity event", icon: Star, color: "var(--color-electric-cyan)", size: "medium" },
+               { title: "Music video direction", icon: Play, color: "var(--color-light-denim)", size: "medium" },
+               { title: "Corporate shows", icon: Clapperboard, color: "var(--color-violet-glow)", size: "small" },
+               { title: "Stage direction", icon: Sparkle, color: "var(--color-royal-blue)", size: "medium" }
              ].map((service, i) => {
                const Icon = service.icon;
+
+               // Dynamic sizing for floating cloud effect
+               const sizeClasses = {
+                 large: "px-8 md:px-10 py-5 md:py-6 text-base md:text-lg",
+                 medium: "px-6 md:px-8 py-4 md:py-5 text-sm md:text-base",
+                 small: "px-5 md:px-6 py-3 md:py-4 text-xs md:text-sm"
+               }[service.size];
+
+               // Floating animation variant based on index
+               const floatVariant = {
+                 hidden: { opacity: 0, y: 30, scale: 0.9 },
+                 visible: {
+                   opacity: 1,
+                   y: 0,
+                   scale: 1,
+                   transition: { type: "spring" as const, stiffness: 100, damping: 12 }
+                 }
+               };
+
                return (
                  <motion.div
-                   variants={fadeInUp}
+                   variants={floatVariant}
                    key={i}
                    className="relative group cursor-pointer"
                  >
-                   <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-electric-blue)] via-[var(--color-violet-accent)] to-[var(--color-magenta-pink)] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md"></div>
-                   <div className="relative h-full glass-panel p-6 md:p-8 rounded-2xl border border-white/10 bg-[#07112F]/80 backdrop-blur-xl hover:bg-[#07112F]/90 transition-all duration-500 flex flex-col items-center text-center justify-center gap-4 overflow-hidden z-10 group-hover:-translate-y-2 group-hover:border-transparent">
+                   <div className="absolute inset-0 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl z-0 shadow-[0_0_30px_rgba(0,229,255,0.4)]"></div>
+                   <div className={`relative glass-panel rounded-full border border-white/50 bg-white/70 backdrop-blur-xl hover:bg-white transition-all duration-500 flex items-center justify-center gap-3 overflow-hidden z-10 group-hover:-translate-y-2 shadow-sm hover:shadow-lg ${sizeClasses}`}>
 
                      {/* Inner shine sweep */}
-                     <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-20deg] group-hover:animate-shine-sweep"></div>
+                     <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-[-20deg] group-hover:animate-shine-sweep"></div>
 
-                     <div className="w-14 h-14 rounded-full glass-panel flex items-center justify-center mb-2 relative z-10 bg-white/5 border border-white/10 shadow-[0_0_15px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500" style={{ boxShadow: `0 0 20px ${service.color}40`, borderColor: `${service.color}40` }}>
-                       <Icon className="w-6 h-6 transition-colors duration-300" style={{ color: service.color, filter: `drop-shadow(0 0 8px ${service.color})` }} />
+                     <div className="flex items-center justify-center relative z-10 transition-transform duration-500 group-hover:scale-110">
+                       <Icon className="w-5 h-5 transition-colors duration-300" style={{ color: service.color }} />
                      </div>
-                     <h3 className="text-sm md:text-base font-bold tracking-wide text-[var(--color-pearl-text)] relative z-10 group-hover:text-white transition-colors duration-300">{service.title}</h3>
+                     <h3 className="font-bold tracking-wide text-[var(--color-deep-navy)] relative z-10 group-hover:text-[var(--color-royal-blue)] transition-colors duration-300">{service.title}</h3>
                    </div>
                  </motion.div>
                );
@@ -580,113 +599,108 @@ Message: ${formData.message}`;
         </div>
       </section>
 
-      {/* Contact Form Frontend */}
-      <section id="contact" className="py-24 md:py-32 px-6">
-        <div className="max-w-4xl mx-auto animated-gradient-border rounded-[2rem] md:rounded-[3rem] p-[2px]">
-          <div className="glass-panel p-8 md:p-16 rounded-[calc(2rem-2px)] md:rounded-[calc(3rem-2px)] shadow-2xl bg-[#07112F]/80 backdrop-blur-3xl relative overflow-hidden h-full w-full">
-             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[var(--color-electric-blue)]/5 via-transparent to-[var(--color-magenta-pink)]/5"></div>
+      {/* Footer Section (Contact) */}
+      <footer id="contact" className="py-24 md:py-32 px-6 border-t border-[var(--color-electric-cyan)]/20 relative bg-white/30 backdrop-blur-sm overflow-hidden">
+        {/* Animated background element */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-gradient-to-t from-[var(--color-ice-blue)] to-transparent opacity-80 pointer-events-none"></div>
 
-             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mb-12 relative z-10">
-               <h2 className="text-clamp-h2 font-bold text-gradient-animated mb-4">Let&apos;s Build Your Next Moment.</h2>
-               <p className="text-[var(--color-slate-muted)] text-base md:text-lg font-medium max-w-2xl mb-6">Inquire about availability for your upcoming project or event.</p>
-               <div className="flex flex-col sm:flex-row gap-6 mb-8">
-                 <a href="https://wa.me/919325465937" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-[var(--color-pearl-text)] hover:text-[var(--color-magenta-pink)] transition-colors group">
-                   <div className="w-10 h-10 rounded-full glass-panel flex items-center justify-center bg-white/5 group-hover:bg-[var(--color-magenta-pink)]/20 transition-all border border-white/10">
-                     <Smartphone className="w-4 h-4 text-[var(--color-magenta-pink)]" />
-                   </div>
-                   <div className="flex flex-col">
-                     <span className="text-[10px] uppercase tracking-widest text-[var(--color-slate-muted)] font-bold">WhatsApp / Phone</span>
-                     <span className="font-semibold tracking-wide">9325465937 / 9175734571</span>
-                   </div>
-                 </a>
-                 <a href="mailto:dhiraj.checks@gmail.com" className="flex items-center gap-3 text-[var(--color-pearl-text)] hover:text-[var(--color-electric-blue)] transition-colors group">
-                   <div className="w-10 h-10 rounded-full glass-panel flex items-center justify-center bg-white/5 group-hover:bg-[var(--color-electric-blue)]/20 transition-all border border-white/10">
-                     <Mail className="w-4 h-4 text-[var(--color-electric-blue)]" />
-                   </div>
-                   <div className="flex flex-col">
-                     <span className="text-[10px] uppercase tracking-widest text-[var(--color-slate-muted)] font-bold">Email</span>
-                     <span className="font-semibold tracking-wide">dhiraj.checks@gmail.com</span>
-                   </div>
-                 </a>
-               </div>
-             </motion.div>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
+          <div className="text-center md:text-left flex-1 max-w-xl">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={fadeInUp}
+              className="inline-flex items-center justify-center md:justify-start mb-6"
+            >
+              <div className="glass-panel px-6 py-2.5 rounded-full border border-[var(--color-electric-cyan)]/30 shadow-[0_0_20px_rgba(0,229,255,0.2)] glow-sweep bg-white/60">
+                <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-[var(--color-royal-blue)] flex items-center gap-2">
+                  <Smartphone className="w-4 h-4 text-[var(--color-electric-cyan)]" />
+                  Let&apos;s Talk
+                </span>
+              </div>
+            </motion.div>
 
-             <form className="space-y-6 md:space-y-8 relative z-10">
-                <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-                  <div className="space-y-3">
-                    <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-slate-muted)] pl-2">Name</label>
-                    <input type="text" className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg hover:bg-white/5" name="name" value={formData.name} onChange={handleInputChange} placeholder="Your name" />
-                  </div>
-                  <div className="space-y-3">
-                    <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-slate-muted)] pl-2">Phone / WhatsApp</label>
-                    <input type="tel" className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg hover:bg-white/5" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="Your number" />
-                  </div>
-                </div>
+            <motion.h2
+              initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}
+              className="text-clamp-h2 font-bold font-display text-[var(--color-deep-navy)] mb-6"
+            >
+              Ready to create something <span className="text-gradient-animated">extraordinary?</span>
+            </motion.h2>
 
-                <div className="space-y-3">
-                  <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-slate-muted)] pl-2">Email</label>
-                  <input type="email" className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg hover:bg-white/5" name="email" value={formData.email} onChange={handleInputChange} placeholder="Your email address" />
-                </div>
+            <motion.p
+              initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}
+              className="text-base md:text-lg text-[var(--color-slate-muted)] font-medium mb-10 max-w-md mx-auto md:mx-0"
+            >
+              Reach out to discuss film choreography, luxury weddings, and premium live shows.
+            </motion.p>
 
-                <div className="space-y-3">
-                  <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-slate-muted)] pl-2">Project Type</label>
-                  <div className="relative">
-                    <select name="projectType" value={formData.projectType} onChange={handleInputChange} className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg appearance-none cursor-pointer hover:bg-white/5">
-                      <option value="" className="text-black">Select an option</option>
-                      <option value="film" className="text-black">Film / TV choreography</option>
-                      <option value="luxury-wedding" className="text-black">Luxury wedding</option>
-                      <option value="sangeet" className="text-black">Sangeet choreography</option>
-                      <option value="entry" className="text-black">Bride & groom entry</option>
-                      <option value="live-show" className="text-black">Live show</option>
-                      <option value="celebrity" className="text-black">Celebrity event</option>
-                      <option value="music-video" className="text-black">Music video</option>
-                      <option value="other" className="text-black">Other</option>
-                    </select>
-                    <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--color-slate-muted)] pointer-events-none" />
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <label className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-slate-muted)] pl-2">Message</label>
-                  <textarea rows={5} className="w-full px-6 py-4 rounded-2xl glass-input focus:outline-none transition-all text-base md:text-lg resize-none hover:bg-white/5" name="message" value={formData.message} onChange={handleInputChange} placeholder="Tell us about your vision..."></textarea>
-                </div>
-
-                <button type="button" onClick={handleWhatsAppInquiry} className="btn-shine w-full bg-gradient-to-r from-[var(--color-electric-blue)] via-[var(--color-violet-accent)] to-[var(--color-magenta-pink)] text-white py-5 rounded-2xl font-bold transition-all duration-500 shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:shadow-[0_0_40px_rgba(124,58,237,0.6)] hover:-translate-y-1 text-base md:text-lg flex justify-center items-center gap-2 group">
-                  Send Inquiry
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
-                </button>
-             </form>
+            {/* Contact Form / Card */}
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}
+              className="glass-panel p-8 rounded-3xl border-white/50 bg-white/60 shadow-xl"
+            >
+              <div className="space-y-4 mb-8">
+                <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Your Name" className="w-full glass-input px-6 py-4 rounded-xl text-sm font-medium border-white hover:border-[var(--color-electric-cyan)] transition-colors focus:bg-white" />
+                <input type="text" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="Phone Number" className="w-full glass-input px-6 py-4 rounded-xl text-sm font-medium border-white hover:border-[var(--color-electric-cyan)] transition-colors focus:bg-white" />
+                <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Email Address" className="w-full glass-input px-6 py-4 rounded-xl text-sm font-medium border-white hover:border-[var(--color-electric-cyan)] transition-colors focus:bg-white" />
+                <select name="projectType" value={formData.projectType} onChange={handleInputChange} className="w-full glass-input px-6 py-4 rounded-xl text-sm font-medium border-white hover:border-[var(--color-electric-cyan)] transition-colors cursor-pointer focus:bg-white">
+                  <option value="" disabled className="text-gray-400">Select Project Type</option>
+                  <option value="Film / Music Video">Film / Music Video</option>
+                  <option value="Luxury Wedding">Luxury Wedding</option>
+                  <option value="Live Event / Show">Live Event / Show</option>
+                  <option value="Other">Other</option>
+                </select>
+                <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Tell us about your vision..." rows={3} className="w-full glass-input px-6 py-4 rounded-xl text-sm font-medium border-white hover:border-[var(--color-electric-cyan)] transition-colors resize-none focus:bg-white"></textarea>
+              </div>
+              <button onClick={handleWhatsAppInquiry} className="w-full btn-shine bg-[var(--color-deep-navy)] hover:bg-[var(--color-royal-blue)] text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.3)] hover:shadow-[0_0_40px_rgba(0,229,255,0.5)] flex items-center justify-center gap-3 group text-sm md:text-base">
+                Send Inquiry via WhatsApp
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </motion.div>
           </div>
-        </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="py-16 md:py-24 px-6 border-t border-white/5 relative z-20 bg-black/40 backdrop-blur-3xl overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--color-midnight-navy)] pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 relative z-10">
-          <div className="text-center md:text-left">
-            <div className="text-2xl md:text-3xl font-bold tracking-tight mb-2 flex items-center justify-center md:justify-start gap-2 font-display">
-              <Sparkle className="w-5 h-5 text-[var(--color-electric-blue)]" />
-              <span className="text-gradient-animated">DHIRAJ BHALERAO</span>
+          <div className="flex flex-col items-center md:items-end justify-center">
+            <div className="text-center md:text-right mb-10">
+              <span className="text-xl font-bold font-display text-[var(--color-deep-navy)] block mb-2">DHIRAJ BHALERAO</span>
+              <span className="text-sm text-[var(--color-slate-muted)] font-bold uppercase tracking-widest">Award-Winning Choreographer</span>
             </div>
-            <div className="text-sm md:text-base text-[var(--color-slate-muted)] font-semibold mb-3">Award-winning choreographer</div>
-            <div className="text-[10px] md:text-xs text-[var(--color-slate-muted)]/70 uppercase tracking-[0.3em] font-bold">Film | TV | Weddings | Live Events</div>
-          </div>
 
-          <div className="flex gap-5">
-            <a href="https://www.instagram.com/dhiiraj_bhalerao?igsh=bGxveWw3NzZrZXNl" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-[var(--color-pearl-text)] hover:text-white hover:bg-[var(--color-magenta-pink)] hover:scale-110 hover:shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:border-transparent transition-all duration-300 shadow-sm border-white/10 group">
-              <Instagram size={20} className="group-hover:animate-pulse" />
-            </a>
-            <a href="https://www.youtube.com/@dhirajbhalerao8577" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-[var(--color-pearl-text)] hover:text-white hover:bg-[#FF0000] hover:scale-110 hover:shadow-[0_0_20px_rgba(255,0,0,0.5)] hover:border-transparent transition-all duration-300 shadow-sm border-white/10 group">
-              <Youtube size={20} className="group-hover:animate-pulse" />
-            </a>
-            <a href="mailto:dhiraj.checks@gmail.com" className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-[var(--color-pearl-text)] hover:text-white hover:bg-[var(--color-electric-blue)] hover:scale-110 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:border-transparent transition-all duration-300 shadow-sm border-white/10 group">
-              <Mail size={20} className="group-hover:animate-pulse" />
-            </a>
-          </div>
+            {/* Direct Contact Options */}
+            <div className="flex flex-col gap-4 w-full max-w-sm mb-12">
+              <a href="tel:+919325465937" className="glass-panel p-4 rounded-2xl border-white/50 bg-white/60 hover:bg-white transition-all flex items-center gap-4 group cursor-pointer shadow-sm hover:shadow-md">
+                <div className="w-10 h-10 rounded-full bg-[var(--color-electric-cyan)]/20 flex items-center justify-center text-[var(--color-royal-blue)] group-hover:bg-[var(--color-electric-cyan)] transition-colors">
+                  <Smartphone className="w-4 h-4" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-slate-muted)]">Call / WhatsApp</p>
+                  <p className="text-sm font-bold text-[var(--color-deep-navy)]">+91 9325465937</p>
+                </div>
+              </a>
+              <a href="mailto:dhiraj.checks@gmail.com" className="glass-panel p-4 rounded-2xl border-white/50 bg-white/60 hover:bg-white transition-all flex items-center gap-4 group cursor-pointer shadow-sm hover:shadow-md">
+                <div className="w-10 h-10 rounded-full bg-[var(--color-violet-glow)]/20 flex items-center justify-center text-[var(--color-royal-blue)] group-hover:bg-[var(--color-violet-glow)] transition-colors">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-slate-muted)]">Email</p>
+                  <p className="text-sm font-bold text-[var(--color-deep-navy)]">dhiraj.checks@gmail.com</p>
+                </div>
+              </a>
+            </div>
 
-          <div className="text-xs md:text-sm text-[var(--color-slate-muted)] font-semibold">
-            © 2026 Dhiraj Bhalerao. All rights reserved.
+            {/* Social Links */}
+            <div className="flex gap-4">
+              <a href="https://www.instagram.com/dhiiraj_bhalerao?igsh=bGxveWw3NzZrZXNl" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-[var(--color-royal-blue)] hover:text-white hover:bg-[var(--color-magenta-pink)] hover:scale-110 transition-all duration-300 shadow-sm border-white/50 bg-white group">
+                <Instagram size={20} className="group-hover:animate-pulse" />
+              </a>
+              <a href="https://www.youtube.com/@dhirajbhalerao8577" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-[var(--color-royal-blue)] hover:text-white hover:bg-[#FF0000] hover:scale-110 transition-all duration-300 shadow-sm border-white/50 bg-white group">
+                <Youtube size={20} className="group-hover:animate-pulse" />
+              </a>
+            </div>
+
+            <div className="mt-12 text-xs text-[var(--color-slate-muted)] font-semibold text-center md:text-right">
+              © 2026 Dhiraj Bhalerao. All rights reserved.
+            </div>
           </div>
         </div>
       </footer>
